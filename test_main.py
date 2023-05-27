@@ -29,7 +29,8 @@ class TesteSupermercado(unittest.TestCase):
         self.assertEqual(self.supermercado.carrinho.calcular_total(), 0.0)
 
     def test_removendoComCarrinhoVazio(self):
-        self.assertRaises(IndexError, self.supermercado.remover_do_carrinho(1))
+        with self.assertRaises(IndexError):
+            self.supermercado.remover_do_carrinho(1)
 
     def test_donoColocaNovoItem(self):
         dono = supermercadoMain.DonoSupermercado(self.supermercado)
