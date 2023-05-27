@@ -1,4 +1,5 @@
 import unittest
+import HtmlTestRunner
 import supermercadoMain
 
 class TesteSupermercado(unittest.TestCase):
@@ -44,4 +45,6 @@ class TesteSupermercado(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    #unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='example_dir'))
+    
