@@ -16,7 +16,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  build e teste:
+  build_e_teste:
 
     runs-on: ubuntu-latest
 
