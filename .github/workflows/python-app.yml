@@ -16,6 +16,7 @@ permissions:
   pull-requests: write
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -30,6 +31,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: pacote python
+        path: supemercadoMain.py
+        
+      
+  test:  
+  
+    runs-on: ubuntu-latest
+  
+    steps:
     - name: Test with unittest
       run: |
         python test_main.py   
