@@ -30,10 +30,6 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest discover -p 'test_*.py'
-        uses: actions/upload-artifact@v3
-        with:
-          name: relatorio_de_testes
-          path: Artefatos/
         
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
