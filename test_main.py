@@ -46,5 +46,5 @@ class TesteSupermercado(unittest.TestCase):
 
 if __name__ == '__main__':
     #unittest.main()
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='example_dir'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='Artefatos'))
     
