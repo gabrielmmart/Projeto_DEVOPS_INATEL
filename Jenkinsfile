@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+    
+    environment {
+        EMAIL_RESPOSTA = 'gabriel.medeiros@ges.inatel.br'
+    }
+    
     stages {
         stage('Instalar dependencias') {
             steps {
