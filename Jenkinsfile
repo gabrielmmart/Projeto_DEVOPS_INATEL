@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        EMAIL_RESPOSTA = 'gabriel.medeiros@ges.inatel.br'
+        NOTIF_EMAIL = 'gabriel.medeiros@ges.inatel.br'
     }
     
     stages {
