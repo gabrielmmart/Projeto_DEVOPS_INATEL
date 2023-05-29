@@ -31,7 +31,7 @@ pipeline {
                 sh '''
                     cd scripts/
                     chmod 777 *
-                    ./jenkins.sh
+                    ./script.sh
                    '''
             }
 
