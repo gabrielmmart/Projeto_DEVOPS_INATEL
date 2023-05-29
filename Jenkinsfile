@@ -10,6 +10,7 @@ pipeline {
         stage('Instalar dependencias') {
             steps {
                 script {
+                    sh 'python -m pip install -U pip'
                     sh 'pip install -r requirements.txt'
                 }
             }
