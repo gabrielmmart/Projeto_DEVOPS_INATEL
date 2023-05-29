@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 import HtmlTestRunner
 import supermercadoMain
 
@@ -7,6 +8,8 @@ class TesteSupermercado(unittest.TestCase):
     def setUp(self):
         self.supermercado = supermercadoMain.Supermercado() 
         self.dono = supermercadoMain.DonoSupermercado(self.supermercado)
+        self.func_1 = supermercadoMain.Funcionario('Gabriel', 'Medeiros', 50000)
+        self.emp_2 = supermercadoMain.Funcionario('Ramon', 'Adonis', 60000)
 
     def test_carrinhoVazio(self):
         c1 = supermercadoMain.Carrinho()
@@ -52,6 +55,24 @@ class TesteSupermercado(unittest.TestCase):
         self.supermercado.comprar_item(1,1)
         self.assertEqual(self.supermercado.carrinho.calcular_total(), 1)
 
+    def test_monthly_schedule(self):
+
+        self.func_1 = Funcionario('Gabriel', 'Medeiros', 50000)
+        self.func_2 = Funcionario('Ramon', 'Adonis', 60000)
+
+        with patch('employee.requests.get') as mocked_get:
+            mocked_get.return_value.ok = True
+            mocked_get.return_value.text = 'Success'
+
+            schedule = self.func_1.horario_funcionario('Maio')
+            mocked_get.assert_called_with('http://company.com/Medeiros/Maio')
+            self.assertEqual(schedule, 'Success')
+
+            mocked_get.return_value.ok = False
+
+            schedule = self.func_1.horario_funcionario('Junho')
+            mocked_get.assert_called_with('http://company.com/Adonis/Junho')
+            self.assertEqual(schedule, 'Bad Response!')
 
 
 if __name__ == '__main__':

@@ -1,3 +1,5 @@
+import requests
+
 class Produto:
     def __init__(self, nome, preco, quantidade):
         self.nome = nome
@@ -67,7 +69,7 @@ class Supermercado:
         self.produtos = [
             Produto("Banana", 0.5, 50),
             Produto("Leite", 5, 100),
-            Produto("Laranja", 1.5, 75),
+            Produto("Laranja", 1.5, 75)
         ]
         self.carrinho = Carrinho()
 
@@ -102,7 +104,28 @@ class Supermercado:
         print(f"Total: ${self.carrinho.calcular_total()}")
         print("####################")
 
+    class Funcionario:
 
+        def __init__(self, primeiro, segundo, salario):
+            self.primeiro = primeiro
+            self.segundo = segundo
+            self.salario = salario
+
+        @property
+        def email(self):
+            return '{}.{}@email.com'.format(self.primeiro, self.segundo)
+
+        @property
+        def nomeCompleto(self):
+            return '{} {}'.format(self.primeiro, self.segundo)
+
+        def horario_funcionario(self, mes):
+            response = requests.get(f'http://supermercado.com/{self.segundo}/{mes}')
+            if response.ok:
+                return response.text
+            else:
+                return 'Bad Response!'
+            
 def main():
     supermercado = Supermercado()
     owner = DonoSupermercado(supermercado)
