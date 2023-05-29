@@ -30,5 +30,14 @@ pipeline {
         }
       }
     }
+    stage ('Notifications'){
+        steps {
+            echo 'Notifications'
+                sh '''
+                    cd scripts/
+                    chmod 777 *
+                    ./jenkins.sh
+                   '''
+        }
   }
 }
