@@ -1,18 +1,26 @@
-# Define nossa imagem base
-FROM jenkins/jenkins:lts-jdk11
+# Base image
+FROM jenkins/jenkins:lts
 
-# Define nosso usuario dentro do container
+# Switch to the root user
 USER root
 
-FROM python:3
+# Install necessary packages and dependencies
+RUN apt-get update \
+    && apt-get install -y python3 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /
+# Install required Python packages
+RUN pip3 install --upgrade pip \
+    && pip3 install virtualenv
 
-COPY requirements.txt ./
-RUN pwd
-RUN ls -la
-RUN apt-get update
-RUN apt-get install -y python-pip
+# Switch back to the Jenkins user
+USER jenkins
+
+# Expose Jenkins port
+EXPOSE 8080
+
+# Set the entrypoint command to start Jenkins
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
 # Instalando mailutils
 RUN apt-get install -y mailutils
