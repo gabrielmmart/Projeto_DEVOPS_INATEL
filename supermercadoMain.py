@@ -1,5 +1,3 @@
-import requests
-
 class Produto:
     def __init__(self, nome, preco, quantidade):
         self.nome = nome
@@ -69,7 +67,7 @@ class Supermercado:
         self.produtos = [
             Produto("Banana", 0.5, 50),
             Produto("Leite", 5, 100),
-            Produto("Laranja", 1.5, 75)
+            Produto("Laranja", 1.5, 75),
         ]
         self.carrinho = Carrinho()
 
@@ -103,6 +101,7 @@ class Supermercado:
             print(f"{i}. {produto.nome} - ${produto.preco} x {quantidade}")
         print(f"Total: ${self.carrinho.calcular_total()}")
         print("####################")
+
 
 def main():
     supermercado = Supermercado()

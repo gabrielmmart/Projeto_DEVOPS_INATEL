@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import patch
 import HtmlTestRunner
 import supermercadoMain
 
@@ -52,6 +51,7 @@ class TesteSupermercado(unittest.TestCase):
         self.dono.update_produto_preco(1,1)
         self.supermercado.comprar_item(1,1)
         self.assertEqual(self.supermercado.carrinho.calcular_total(), 1)
+
 
 
 if __name__ == '__main__':
