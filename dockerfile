@@ -9,11 +9,11 @@ FROM python:3
 WORKDIR /
 
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pwd
+RUN ls -la
+RUN apt-get update
+RUN apt-get install -y python-pip
 
-COPY . .
-
-CMD [ "python", "./supermercadoMain.py" ]
 # Instalando mailutils
 RUN apt-get install -y mailutils
 
