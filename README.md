@@ -5,7 +5,7 @@
 1. Clone o repositório
 
    ```sh
-   git clone [https://github.com/your_username_/Project-Name.git](https://github.com/gabrielmmart/supermercado_C214-S107.git)
+   git clone https://github.com/gabrielmmart/supermercado_C214-S107.git
    ```
 2. Instale pip como o gerenciador de dependências
 
