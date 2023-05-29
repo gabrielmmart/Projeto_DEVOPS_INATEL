@@ -4,22 +4,23 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git 'https://github.com/gabrielmmart/supermercado_C214-S107'
             }
         }
         stage('Instalar dependencias') {
             steps {
                 script {
-                    sh 'python -m pip install -U pip'
+                    sh 'python3 -m pip install -U pip'
                     sh 'pip install -r requirements.txt'
-                }
+                }python --version
+
             }
         }
         stage('Unit Testing') { // Perform unit testing
             steps {
              script {
                     sh """
-                    python -m unittest discover -s tests/unit
+                    python3 -m unittest discover -s tests/unit
                     """
                 }
             }
