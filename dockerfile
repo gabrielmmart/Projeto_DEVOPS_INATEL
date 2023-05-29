@@ -1,5 +1,5 @@
 # Base image
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:lts-jdk11
 
 # Switch to the root user
 USER root
@@ -12,10 +12,9 @@ RUN apt-get update \
 # Install required Python packages
 RUN pip3 install --upgrade pip \
     && pip3 install virtualenv
-    
-# Instalando mailutils
-RUN apt-get install -y mailutils
 
+# Instalando mailutils
+RUN apt-get update && apt-get install -y mailutils
 # Switch back to the Jenkins user
 USER jenkins
 
