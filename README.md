@@ -10,10 +10,7 @@
 2. Instale pip como o gerenciador de dependências
 
    ```sh
-   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-   ```
-   ```sh
-   python get-pip.py
+   python -m pip install -U pip
    ```
 3. Instale as dependências
 
