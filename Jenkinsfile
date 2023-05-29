@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/gabrielmmart/supermercado_C214-S107'
-            }
-        }
         stage('Instalar dependencias') {
             steps {
                 script {
@@ -20,7 +15,7 @@ pipeline {
             steps {
              script {
                     sh """
-                    python3 -m unittest discover -s tests/unit
+                    python3 -m unittest discover -s /
                     """
                 }
             }
