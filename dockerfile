@@ -4,17 +4,16 @@ FROM jenkins/jenkins:lts-jdk11
 # Define nosso usuario dentro do container
 USER root
 
-# Executa comandos para instalar o pip
-RUN apt-get update
-RUN apt-get install -y python-pip
-RUN pip install --upgrade pip
+FROM python:3
 
-# Define uma variavel de ambiente MAVEN_HOME que aponta para o local do maven
-ENV MAVEN_HOME /opt/maven
+WORKDIR /
 
-# chown: comando linux que muda o dono de uma pasta. Nesse caso estamos dando permissao para o usuario jenkins
-RUN chown -R jenkins:jenkins /opt/maven
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
+COPY . .
+
+CMD [ "python", "./supermercadoMain.py" ]
 # Instalando mailutils
 RUN apt-get install -y mailutils
 
