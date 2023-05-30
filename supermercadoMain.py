@@ -1,3 +1,5 @@
+import requests
+
 class Produto:
     def __init__(self, nome, preco, quantidade):
         self.nome = nome
@@ -102,6 +104,19 @@ class Supermercado:
         print(f"Total: ${self.carrinho.calcular_total()}")
         print("####################")
 
+
+class Funcionario:    
+    def __init__(self, nome, sobrenome, salario):
+        self.nome = nome
+        self.sobrenome = sobrenome
+        self.salario = salario
+
+    def horarioDoMes(self, mes):
+        response = requests.get(f'http://supermercado.com/{self.sobrenome}/{mes}')
+        if response.ok:
+            return response.text
+        else:
+            return 'Bad Response!'
 
 def main():
     supermercado = Supermercado()

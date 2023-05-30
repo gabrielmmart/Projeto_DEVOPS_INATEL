@@ -1,12 +1,15 @@
 import unittest
 import HtmlTestRunner
 import supermercadoMain
+from unittest.mock import patch
 
 class TesteSupermercado(unittest.TestCase):
 
     def setUp(self):
         self.supermercado = supermercadoMain.Supermercado() 
         self.dono = supermercadoMain.DonoSupermercado(self.supermercado)
+        self.func_1 = supermercadoMain.Funcionario('Gabriel', 'Medeiros', 500)
+        self.func_2 = supermercadoMain.Funcionario('Ramon', 'Adonis', 600)
 
     def test_carrinhoVazio(self):
         c1 = supermercadoMain.Carrinho()
@@ -52,7 +55,20 @@ class TesteSupermercado(unittest.TestCase):
         self.supermercado.comprar_item(1,1)
         self.assertEqual(self.supermercado.carrinho.calcular_total(), 1)
 
+    def test_horarioDoMes(self):
+        with patch('supermercadoMain.requests.get') as mocked_get:
+            mocked_get.return_value.ok = True
+            mocked_get.return_value.text = 'Success'
 
+            horario = self.func_1.horarioDoMes('Maio')
+            mocked_get.assert_called_with('http://supermercado.com/Medeiros/Maio')
+            self.assertEqual(horario, 'Success')
+
+            mocked_get.return_value.ok = False
+
+            horario = self.func_2.horarioDoMes('Junho')
+            mocked_get.assert_called_with('http://supermercado.com/Adonis/Junho')
+            self.assertEqual(horario, 'Bad Response!')
 
 if __name__ == '__main__':
     #unittest.main()
