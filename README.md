@@ -22,3 +22,7 @@
    ```sh
    python supermercadoMain.py 
    ```
+### Autores
+
+Gabriel Medeiros GES 97
+Ramon Adonis GEC 1581
