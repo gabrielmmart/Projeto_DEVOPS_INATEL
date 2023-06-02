@@ -22,6 +22,23 @@
    ```sh
    python supermercadoMain.py 
    ```
+### Usando docker
+   
+1. Na linha de comando:
+
+   ```sh
+   docker build -t python-jenkins . 
+   ```
+2. Próximo comando:
+
+   ```sh
+   docker run -p 8080:8080 python-jenkins
+   ```
+   
+3: abra no browser:
+
+   localhost:8080
+   
 ### Autores
 
 Gabriel Medeiros GES 97
