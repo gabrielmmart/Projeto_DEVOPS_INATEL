@@ -35,9 +35,9 @@
    docker run -p 8080:8080 python-jenkins
    ```
    
-3: abra no browser:
+3: Abra no browser:
 
-   localhost:8080
+      localhost:8080
    
 ### Autores
 
